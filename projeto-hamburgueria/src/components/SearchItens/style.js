@@ -24,6 +24,12 @@ export const Form = styled.form`
     border: 1px solid var(--primary);
     border-radius: 8px;
     color: white;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  button:hover {
+    background-color: var(--primary-50);
+    border: 1px solid var(--primary-50);
   }
 
   @media (min-width: 1024px) {

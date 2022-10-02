@@ -1,16 +1,17 @@
 import React from "react";
 import ProductCard from "../ProductCard";
+import { Ul } from "./style";
 
-function ProductList({ list }) {
+function ProductList({ list, buyItem }) {
   return (
     <div>
       {list.length ? (
         <div>
-          <ul>
-            {list.map(item =>
-              <ProductCard item={item}/>
-            )}
-          </ul>
+          <Ul>
+            {list.map((item) => (
+              <ProductCard item={item} key={item.id} buyItem={buyItem}/>
+            ))}
+          </Ul>
         </div>
       ) : (
         <div>

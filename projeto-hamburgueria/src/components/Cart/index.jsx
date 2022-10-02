@@ -1,29 +1,54 @@
 import React from "react";
+import { Container } from "./style";
 
-function Cart({ list }) {
+function Cart({ list, removeItem }) {
+  const totalCart = list.reduce((acc, cur) => acc + Number(cur.price), 0);
+
   return (
-    <div>
+    <Container>
       <header>
         <span>Carrinho de compras</span>
       </header>
-      <ul>
-        {list.length ? (
-          list.map((item) => (
-            <li key={item.id}>
-              <div>
-                <h2>{item.name}</h2>
-                <span>{item.category}</span>
-              </div>
-              <button>Remover</button>
-            </li>
-          ))
-        ) : (
+      {list.length ? (
+        <>
+          <ul>
+            {list.map((item, index) => (
+              <li key={index}>
+                <div className="imgContainer">
+                  <img src={item.img} alt={item.name} />
+                </div>
+                <div className="infoContainer">
+                  <h2>{item.name}</h2>
+                  <span className="itemCategory">{item.category}</span>
+                </div>
+                <button
+                  onClick={() => {
+                    removeItem(index);
+                  }}
+                >
+                  Remover
+                </button>
+              </li>
+            ))}
+          </ul>
+          <div className="cartCount">
+            <div>
+              <p>
+                Total
+                <span>{`R$ ${totalCart}`}</span>
+              </p>
+              <button>Remover todos</button>
+            </div>
+          </div>
+        </>
+      ) : (
+        <ul>
           <div>
             <p>Sua sacola está vazia</p> <span>adicione itens</span>
           </div>
-        )}
-      </ul>
-    </div>
+        </ul>
+      )}
+    </Container>
   );
 }
 
