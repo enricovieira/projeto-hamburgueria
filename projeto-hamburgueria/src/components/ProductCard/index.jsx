@@ -1,7 +1,7 @@
 import React from "react";
 import { Li, Container, ImgContainer } from "./style";
 
-function ProductCard({ item, buyItem }) {
+function ProductCard({ item, buyItem, cartList }) {
   return (
     <Li>
       <ImgContainer>

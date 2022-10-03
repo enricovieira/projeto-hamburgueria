@@ -36,7 +36,7 @@ function App() {
         </div>
       </Header>
       <Main>
-        <ProductList list={isItens} buyItem={buyItem} />
+        <ProductList list={isItens} buyItem={buyItem} cartList={isCart}  />
         <Cart list={isCart} removeItem={removeItem} />
       </Main>
     </>

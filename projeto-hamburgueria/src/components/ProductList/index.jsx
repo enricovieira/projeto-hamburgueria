@@ -2,14 +2,19 @@ import React from "react";
 import ProductCard from "../ProductCard";
 import { Ul } from "./style";
 
-function ProductList({ list, buyItem }) {
+function ProductList({ list, buyItem, cartList }) {
   return (
     <div>
       {list.length ? (
         <div>
           <Ul>
             {list.map((item) => (
-              <ProductCard item={item} key={item.id} buyItem={buyItem}/>
+              <ProductCard
+                item={item}
+                key={item.id}
+                buyItem={buyItem}
+                cartList={cartList}
+              />
             ))}
           </Ul>
         </div>
