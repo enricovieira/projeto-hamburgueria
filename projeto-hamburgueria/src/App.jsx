@@ -9,9 +9,16 @@ import { useState, useEffect } from "react";
 function App() {
   const [isItens, setIsItens] = useState([]);
   const [isCart, setIsCart] = useState([]);
+  const [isFilter, setFilter] = useState([]);
 
   function buyItem(item) {
-    setIsCart([...isCart, item]);
+    const cartItens = isCart.find((product) => product.id === item.id);
+
+    if (cartItens) {
+      alert("Esse produto já foi adicionado");
+    } else {
+      setIsCart((previous) => [...previous, item]);
+    }
   }
 
   function removeItem(itemSelected) {
@@ -32,12 +39,17 @@ function App() {
       <Header>
         <div className="headerContainer">
           <img src={logo} alt="Burguer Kenzie logo" />
-          <Search />
+          <Search setFilter={setFilter} list={isItens} />
         </div>
       </Header>
       <Main>
-        <ProductList list={isItens} buyItem={buyItem} cartList={isCart}  />
-        <Cart list={isCart} removeItem={removeItem} />
+        <ProductList
+          list={isItens}
+          buyItem={buyItem}
+          cartList={isCart}
+          isFilter={isFilter}
+        />
+        <Cart list={isCart} removeItem={removeItem} setIsCart={setIsCart} />
       </Main>
     </>
   );

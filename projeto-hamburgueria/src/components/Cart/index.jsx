@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "./style";
 
-function Cart({ list, removeItem }) {
+function Cart({ list, removeItem, setIsCart }) {
   const totalCart = list.reduce((acc, cur) => acc + Number(cur.price), 0);
 
   return (
@@ -37,7 +37,7 @@ function Cart({ list, removeItem }) {
                 Total
                 <span>{`R$ ${totalCart}`}</span>
               </p>
-              <button>Remover todos</button>
+              <button onClick={() => setIsCart([])}>Remover todos</button>
             </div>
           </div>
         </>

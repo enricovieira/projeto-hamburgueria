@@ -13,10 +13,9 @@ function ProductCard({ item, buyItem, cartList }) {
         <span className="itemCategory">{item.category}</span>
         <span className="itemPrice">{`R$ ${item.price}`}</span>
         <button
-          id={item.id}
-          onClick={() => {
-            buyItem(item);
-          }}
+          onClick={() => 
+            buyItem(item)
+          }
         >
           Adicionar
         </button>

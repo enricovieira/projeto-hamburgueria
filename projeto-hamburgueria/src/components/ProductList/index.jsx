@@ -2,13 +2,14 @@ import React from "react";
 import ProductCard from "../ProductCard";
 import { Ul } from "./style";
 
-function ProductList({ list, buyItem, cartList }) {
+function ProductList({ list, buyItem, cartList, isFilter }) {
+  const lists = isFilter.length === 0 ? list : isFilter;
   return (
     <div>
       {list.length ? (
         <div>
           <Ul>
-            {list.map((item) => (
+            {lists.map((item) => (
               <ProductCard
                 item={item}
                 key={item.id}
