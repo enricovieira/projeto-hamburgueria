@@ -6,6 +6,9 @@ import Cart from "./components/Cart";
 import { Header, Main } from "./styles/styles";
 import { useState, useEffect } from "react";
 
+import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
+
 function App() {
   const [isItens, setIsItens] = useState([]);
   const [isCart, setIsCart] = useState([]);
@@ -15,7 +18,10 @@ function App() {
     const cartItens = isCart.find((product) => product.id === item.id);
 
     if (cartItens) {
-      alert("Esse produto já foi adicionado");
+      toast("Este produto já foi adicionado", {
+        position: "top-right",
+        autoClose: 1000,
+      });
     } else {
       setIsCart((previous) => [...previous, item]);
     }
@@ -36,6 +42,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
+      <ToastContainer />
       <Header>
         <div className="headerContainer">
           <img src={logo} alt="Burguer Kenzie logo" />
