@@ -6,11 +6,11 @@ function Search({ setFilter, list }) {
 
   function onSubmit(event) {
     event.preventDefault();
-
-    const search = list.filter(
-      (item) =>
-        item.name.toLowerCase().includes(valueInput.toLowerCase()) ||
-        item.category.toLowerCase().includes(valueInput.toLowerCase())
+    const search = list.filter((item) =>
+      item.name && item.category
+        ? item.name.toLowerCase().includes(valueInput.toLowerCase()) ||
+          item.category.toLowerCase().includes(valueInput.toLowerCase())
+        : console.log("funcionando")
     );
 
     setFilter(search);
